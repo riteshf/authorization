@@ -2,7 +2,6 @@ module.exports = function authorise(permittedRoles) {
   return (req, res, next) => {
     // first get the user from the req
     const user = req.user;
-
     // check if user has any of the permittedRoles
     let isPermitted = false;
 

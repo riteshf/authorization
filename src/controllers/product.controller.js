@@ -1,5 +1,6 @@
 const express = require("express");
 const authenticate = require("../middlewares/authenticate.middleware");
+const authorise = require("../middlewares/authorise.middleware");
 
 const Product = require("../models/product.model");
 
@@ -38,9 +39,8 @@ router.get("/my", authenticate, async (req, res) => {
   }
 });
 
-router.patch("/:id", authenticate, async (req, res) => {
+router.patch("/:id", authenticate, authorise(["owner"]), async (req, res) => {
   try {
-    console.log(req.user);
     const product = await Product.findByIdAndUpdate(
       req.params.id,
       {
