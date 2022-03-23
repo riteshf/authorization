@@ -9,7 +9,7 @@ const getUserByToken = (token) => {
   });
 };
 
-const authCheck = async (req, res, next) => {
+const authenticate = async (req, res, next) => {
   // 1. read the req header
   const headers = req.headers;
   // 2. get the access token from headers
@@ -39,4 +39,4 @@ const authCheck = async (req, res, next) => {
   return next();
 };
 
-module.exports = authCheck;
+module.exports = authenticate;
