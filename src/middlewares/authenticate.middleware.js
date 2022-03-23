@@ -27,7 +27,7 @@ const authenticate = async (req, res, next) => {
   try {
     // if token exists then get the user and validate the token
     user = await getUserByToken(token);
-
+    console.log(user);
     // if token matches with a user, allow him to go next
   } catch (e) {
     // else 400
